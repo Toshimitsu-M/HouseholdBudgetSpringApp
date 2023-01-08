@@ -1,0 +1,2 @@
+insert into MONTH_EXP(month_id, company, address, rent, food_exp, utillity_bills, communication, incidental_exp, scholarship, entertainment, timestamp)
+values('202212', 'まま株式会社', 'とと村', '60000', '30000', '10000', '10000', '20000', '20000', '10000', sysdate);

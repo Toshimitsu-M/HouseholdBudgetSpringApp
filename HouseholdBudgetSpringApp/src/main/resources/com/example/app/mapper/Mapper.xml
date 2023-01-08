@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.app.mapper.Mapper">
+	
+	<select id="selectAll" resultType="MonthExp">
+		select * from MONTH_EXP
+		where month_id = #{month_id}
+	</select>
+
+</mapper>

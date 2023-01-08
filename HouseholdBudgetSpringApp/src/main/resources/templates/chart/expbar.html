@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+
+<html xmls:th="http://www.thymeleaf.org"><head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script type='text/javascript' src="templates/js/data.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.2.0/chart.min.js"
+	integrity="sha512-VMsZqo0ar06BMtg0tPsdgRADvl0kDHpTbugCBBrL55KmucH6hP9zWdLIWY//OTfMnzz6xWQRxQqsUFefwHuHyg=="
+	crossorigin="anonymous"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@next/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+<script src="https://unpkg.com/vue@next"></script>
+
+<title>Insert title here</title>
+</head>
+<body>
+	<th:block th:fragment="header">
+		<div style="width: 1600px">
+			<canvas id="mychart-bar"></canvas>
+		</div>
+		<script>
+			var ctx = document.getElementById("mychart-bar");
+			/* .getContext('2d'); */
+			/* var original = Chart.defaults.global.legend.onClick;
+			Chart.defaults.global.legend.onClick = function(e, legendItem) {
+				update_caption(legendItem);
+				original.call(this, e, legendItem);
+			}; */
+
+			var r = [ 20, 5, 5, 5, 5, 1, 1, 1, 1, 1, 1, 1, 1 ];
+
+			var myChart = new Chart(ctx, {
+				type : 'bar',
+				data : {
+					labels : [ "10月", "11月", "12月", "1月", "2月", "3月", "4月",
+							"5月", "6月", "7月", "8月", "9月" ],
+					datasets : [ {
+						label : '家賃',
+						backgroundColor : "rgba(91,155,213,1)",
+						data : r,
+					}, {
+						label : '食費',
+						backgroundColor : "rgba(237,125,49,1)",
+						data : [ 0, 1, 2, 3, 4, 1, 1, 1, 1, 1, 1, 1, 1 ],
+					}, {
+						label : '水道光熱費',
+						backgroundColor : "rgba(165,165,165,1)",
+						data : [ 10, 2, 5, 11, 12, 1, 1, 1, 1, 1, 1, 1 ],
+					}, {
+						label : '通信費',
+						backgroundColor : "rgba(255,192,0,1)",
+						data : [ 10, 2, 5, 11, 12, 1, 1, 1, 1, 1, 1, 1 ],
+					}, {
+						label : '雑費',
+						backgroundColor : "rgba(68,114,196,1)",
+						data : [ 10, 2, 5, 11, 12, 1, 1, 1, 1, 1, 1, 1 ],
+					}, {
+						label : '奨学金',
+						backgroundColor : "rgba(112,173,71,1)",
+						data : [ 10, 2, 5, 11, 12, 1, 1, 1, 1, 1, 1, 1 ],
+					}, {
+						label : '交際費',
+						backgroundColor : "rgba(37,94,145,1)",
+						data : [ 10, 2, 5, 11, 12, 1, 1, 1, 1, 1, 1, 1 ],
+					} ]
+				},
+				options : {
+					elements : {
+						bar : {
+							borderWidth : 0,
+						}
+					},
+					plugins : {
+						title : {
+							display : true,
+							text : '支出（月別）',
+						//padding : 3,
+						//fontSize : 26
+						},
+						legend : {
+							labels : {
+								boxWidth : 40,
+								padding : 10
+							},
+							display : true
+						},
+					},
+					scales : {
+						x : {
+							stacked : true, //積み上げ有効・無効設定 
+						/* categoryPercentage : 100 */
+						},
+						y : {
+							stacked : true, // 積み上げ有効・無効設定
+							ticks : {
+								stepSize : 2
+							// ExcelのStep数に合わせる
+							}
+						}
+					},
+					layout : {
+						padding : 200
+					},
+					tooltips : {
+						mode : 'label'
+					}
+				}
+			});
+		</script>
+	</th:block>
+</body>
+</html>
